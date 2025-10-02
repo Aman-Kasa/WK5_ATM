@@ -1,43 +1,64 @@
 #include <stdio.h>
-
-
-float balance, withdrawal_amount, deposit_amount;
+#include <string.h>
 
 void check_balance(float balance){
-  printf("Your current balance is %.2f\n", balance);
+    printf("Your current balance is %.2f\n", balance);
 }
 
-float deposit(float balance){
-  float deposit_amount;
-  printf("Please enter the amount you would like to deposit into your account:\n");
-  scanf("%f", &deposit_amount);
-  if (deposit_amount < 1){
-    printf("Sorry, you cannot deposit an amount less than 1. Please try again\n");
-    return balance;
-  }
-  else{
-    printf("Depositing %.2f into your account...\n", deposit_amount);
-    balance = balance + deposit_amount;
-    printf("Successfully deposited %.2f into your account.\n", deposit_amount);
-    return balance;
-  }
-}
-float withdraw(float balance){
-  float withdrawal_amount;
-  printf("Please enter the amount you would like to withdraw from account\n");
-  scanf("%f", &withdrawal_amount);
+float deposit(float balance, char transactions[][50], int *trans_count){
+    float amount;
+    printf("Enter deposit amount: ");
+    scanf("%f", &amount);
 
-  if (withdrawal_amount > balance){
-    printf("Sorry, you do not have enough funds in your account.\n");
+    if (amount < 1){
+        printf("Deposit must be at least 1.\n");
+        return balance;
+    }
+
+    balance += amount;
+    printf("Successfully deposited %.2f. New balance: %.2f\n", amount, balance);
+
+    // Save transaction
+    if (*trans_count < 10){ // last 10 transactions
+        snprintf(transactions[*trans_count], 50, "Deposited %.2f", amount);
+        (*trans_count)++;
+    }
     return balance;
-  }
-  else if (withdrawal_amount < 1){
-    printf("Sorry, you cannot withdraw an amount less than 1. Please try again.\n");
+}
+
+float withdraw(float balance, char transactions[][50], int *trans_count){
+    float amount;
+    printf("Enter withdrawal amount: ");
+    scanf("%f", &amount);
+
+    if (amount < 1){
+        printf("Withdrawal must be at least 1.\n");
+        return balance;
+    } else if (amount > balance){
+        printf("Insufficient funds. Current balance: %.2f\n", balance);
+        return balance;
+    }
+
+    balance -= amount;
+    printf("Successfully withdrew %.2f. New balance: %.2f\n", amount, balance);
+
+    // Save transaction
+    if (*trans_count < 10){
+        snprintf(transactions[*trans_count], 50, "Withdrew %.2f", amount);
+        (*trans_count)++;
+    }
+
     return balance;
-  }
-  else {
-    printf("Withdrawing %.2f from your account...\n", withdrawal_amount);
-    balance = balance - withdrawal_amount;
-    printf("Withdrawal successful, please collect your cash.\n");
-    return balance;
-  }
+}
+
+void view_transactions(char transactions[][50], int trans_count){
+    printf("\n--- Transaction Log ---\n");
+    if (trans_count == 0){
+        printf("No transactions yet.\n");
+        return;
+    }
+    for (int i = 0; i < trans_count; i++){
+        printf("%d. %s\n", i + 1, transactions[i]);
+    }
+}
+
