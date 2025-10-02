@@ -4,8 +4,16 @@
 
 int main() {
     float balances[3] = {1000, 500, 1200}; // initial balances
-    char transactions[3][10][50]; // 3 users, 10 transactions max, each 50 chars
-    int trans_count[3] = {0,0,0}; // count of transactions per user
+    char transactions[3][10][50]; // 3 users, 10 transactions max
+    int trans_count[3] = {0,0,0};
+
+
+//>>>>welcome message,BEFORE login
+    printf("====================================\n");
+    printf("       WELCOME TO BPR ATM\n");
+    printf("====================================\n\n");
+
+
 
     int userIndex = login();
     if (userIndex == -1){
@@ -21,6 +29,7 @@ int main() {
         printf("3. Withdraw Money\n");
         printf("4. View Transaction Log\n");
         printf("5. Log Out\n");
+        printf("6. Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -37,14 +46,17 @@ int main() {
             case 4:
                 view_transactions(transactions[userIndex], trans_count[userIndex]);
                 break;
-            case 5:
+            case 5: // Log Out → back to login
                 printf("Logging out...\n");
-                userIndex = login(); // allow another user to log in
+                userIndex = login(); // prompt for username again
                 if (userIndex == -1){
                     printf("Exiting program.\n");
                     return 0;
                 }
                 break;
+            case 6: // Exit → completely shut down
+                printf("Exiting program completely. Goodbye!\n");
+                return 0; // ends program
             default:
                 printf("Invalid option, try again.\n");
         }

@@ -18,9 +18,9 @@ float deposit(float balance, char transactions[][50], int *trans_count){
     balance += amount;
     printf("Successfully deposited %.2f. New balance: %.2f\n", amount, balance);
 
-    // Save transaction
-    if (*trans_count < 10){ // last 10 transactions
-        snprintf(transactions[*trans_count], 50, "Deposited %.2f", amount);
+    // Save transaction with balance
+    if (*trans_count < 10){ // keep last 10 transactions
+        snprintf(transactions[*trans_count], 50, "Deposited %.2f | %.2f", amount, balance);
         (*trans_count)++;
     }
     return balance;
@@ -42,9 +42,9 @@ float withdraw(float balance, char transactions[][50], int *trans_count){
     balance -= amount;
     printf("Successfully withdrew %.2f. New balance: %.2f\n", amount, balance);
 
-    // Save transaction
+    // Save transaction with balance
     if (*trans_count < 10){
-        snprintf(transactions[*trans_count], 50, "Withdrew %.2f", amount);
+        snprintf(transactions[*trans_count], 50, "Withdrew %.2f | %.2f", amount, balance);
         (*trans_count)++;
     }
 
@@ -52,13 +52,23 @@ float withdraw(float balance, char transactions[][50], int *trans_count){
 }
 
 void view_transactions(char transactions[][50], int trans_count){
-    printf("\n--- Transaction Log ---\n");
+    printf("\n=== Transaction Log ===\n");
+
     if (trans_count == 0){
         printf("No transactions yet.\n");
         return;
     }
+
+    // Print table header
+    printf("%-5s %-20s %-10s\n", "No.", "Transaction", "Balance");
+    printf("----------------------------------------\n");
+
+    // Print each transaction
     for (int i = 0; i < trans_count; i++){
-        printf("%d. %s\n", i + 1, transactions[i]);
+        char action[20];
+        float bal;
+        sscanf(transactions[i], "%19[^|]|%f", action, &bal); // split "Deposited 100 | 500"
+        printf("%-5d %-20s %-10.2f\n", i + 1, action, bal);
     }
 }
 

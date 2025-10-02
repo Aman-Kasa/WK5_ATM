@@ -18,22 +18,23 @@ int login(void) {
     char inputName[NAME_LEN];
     int inputPin;
 
-    printf("Enter username: ");
-    scanf("%31s", inputName);
-    clearInputBuffer();
+    while (1) { // <-- loop until correct login
+        printf("Enter username: ");
+        scanf("%31s", inputName);
+        clearInputBuffer();
 
-    printf("Enter 4-digit PIN: ");
-    scanf("%d", &inputPin);
-    clearInputBuffer();
+        printf("Enter 4-digit PIN: ");
+        scanf("%d", &inputPin);
+        clearInputBuffer();
 
-    for (int i = 0; i < NUM_USERS; i++) {
-        if (strcmp(inputName, usernames[i]) == 0 && inputPin == pins[i]) {
-            printf("Login successful. Welcome, %s!\n", usernames[i]);
-            return i; // return user index
+        for (int i = 0; i < NUM_USERS; i++) {
+            if (strcmp(inputName, usernames[i]) == 0 && inputPin == pins[i]) {
+                printf("Login successful. Welcome, %s!\n", usernames[i]);
+                return i; // return user index
+            }
         }
-    }
 
-    printf("Login failed.\n");
-    return -1;
+        printf("Wrong username or password. Please try again.\n\n");
+    }
 }
 
