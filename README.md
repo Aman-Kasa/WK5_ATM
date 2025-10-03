@@ -39,8 +39,23 @@ The system supports:
 1. The user enters their **username** and **4-digit PIN**.  
 2. Upon successful login, the user sees a menu:
 
+--------------
+--- ATM Menu ---
 
+1.Check Balance
 
+2.Deposit Money
+
+3.Withdraw Money
+
+4.View Transaction Log
+
+5.Log Out
+
+6.Exit
+Choose an option:
+
+----------------------------------------------------------------------------------------
 
 3. Functionalities:  
    - **Check Balance**: Shows current user balance.  
@@ -57,7 +72,7 @@ The system supports:
 ### 1. Clone the Repository
 ```bash
 >>>>>git clone https://github.com/Aman-Kasa/WK5_ATM.git
->>>>>cd WK5_ATM
+>>>>>cd WK5_ATM:
 
 ----------------------------------------------------------------------------------
   2. Compile
