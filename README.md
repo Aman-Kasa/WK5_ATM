@@ -1,3 +1,6 @@
+![ATM_Simulator_C](https://imgs.search.brave.com/VARPtIwe4_YE1m2_Wb8a_Y1uIfhDdfFfbK-e7luKNio/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE2/MTE2MDU4NjI2NTEt/YzkxYjg3NzhjZTAx/P2ZtPWpwZyZxPTYw/Jnc9MzAwMCZpeGxp/Yj1yYi00LjEuMCZp/eGlkPU0zd3hNakEz/ZkRCOE1IeHpaV0Z5/WTJoOE1ueDhZWFJ0/SlRJd2JXRmphR2x1/Wlh4bGJud3dmSHd3/Zkh4OE1BPT0)
+
+
 # WK5_ATM 
 An ATM system in C that allows multiple predefined users to log in and perform basic banking operations such as checking balance, depositing, withdrawing, and viewing transaction history. The system simulates a real ATM interface and demonstrates how arrays and strings can be used to manage user accounts and operations.
 
