@@ -94,3 +94,8 @@ WK5_ATM/
 │── functions.h     # Functions header
 │── README.md       # Project documentation
 │── atm             # Compiled executable (after build)
+-------------------------------------------------------------------------------------
+
+## 👥 Contributors
+- Aman Kasa
+- Joseph Kambai
