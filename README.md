@@ -1,35 +1,81 @@
 ![ATM_Simulator_C](https://imgs.search.brave.com/VARPtIwe4_YE1m2_Wb8a_Y1uIfhDdfFfbK-e7luKNio/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE2/MTE2MDU4NjI2NTEt/YzkxYjg3NzhjZTAx/P2ZtPWpwZyZxPTYw/Jnc9MzAwMCZpeGxp/Yj1yYi00LjEuMCZp/eGlkPU0zd3hNakEz/ZkRCOE1IeHpaV0Z5/WTJoOE1ueDhZWFJ0/SlRJd2JXRmphR2x1/Wlh4bGJud3dmSHd3/Zkh4OE1BPT0)
 
+-------------------------------------------------------------------------------------
 
-# WK5_ATM 
-An ATM system in C that allows multiple predefined users to log in and perform basic banking operations such as checking balance, depositing, withdrawing, and viewing transaction history. The system simulates a real ATM interface and demonstrates how arrays and strings can be used to manage user accounts and operations.
+# 💳 WK5 ATM Simulator in C
 
-*System Overview*
+> **Week 5 Group Assignment** – Low-Level Programming (C)  
+> Developed as part of ALU coursework.  
+> This project contributes **6%** to the total grade.
 
-The user logs in by entering a username and a 4-digit PIN.
+-------------------------------------------------------------------------------------
 
-After a successful login, the user can:
+## 📌 Problem Statement
+This project is a **text-based ATM simulator written in C**.  
+It mimics real ATM operations and demonstrates how arrays, strings, loops, and modular functions can be used to manage multiple user accounts.
 
-- Check balance
+The system supports:
 
-- Deposit money
+- User authentication (username + 4-digit PIN)  
+- Checking account balances  
+- Depositing and withdrawing money  
+- Viewing recent transactions (up to 10 per user)  
+- Logging out and switching between multiple users  
 
-- Withdraw money
+--------------------------------------------------------------------------------------
 
-- View basic transaction log (text-based summary)
+## 🔑 Predefined Users
+| Username | PIN  | Initial Balance |
+|----------|------|----------------|
+| aman     | 1234 | 1000.00        |
+| joseph   | 5678 | 500.00         |
+| thadee   | 9012 | 1200.00        |
 
-- Log out
+> **Note:** Use these credentials to log in when testing the program.
 
-*How to run the system*
+--------------------------------------------------------------------------------------
 
-Clone the repository onto your machine, then compile atm.c and link it with functions.c and login.c, then run the executable.
-
-There are three predefined users with their respective 4-digit login pins: 
-1. 'aman' - 1234
-2. 'joseph' - 5678
-3. 'thadee' - 9012
-
-Log in with any of the usernames and their respective 4-digit pin.
+## 🖥️ System Overview
+1. The user enters their **username** and **4-digit PIN**.  
+2. Upon successful login, the user sees a menu:
 
 
-Done by Aman Kasa and Joseph Kambai.
+
+
+3. Functionalities:  
+   - **Check Balance**: Shows current user balance.  
+   - **Deposit Money**: Adds money to the balance (minimum 1 unit).  
+   - **Withdraw Money**: Subtracts money if funds are sufficient.  
+   - **View Transaction Log**: Displays last 10 transactions in a table.  
+   - **Log Out**: Returns to login prompt for a different user.  
+   - **Exit**: Closes the program.
+
+---------------------------------------------------------------------------------------
+
+## ⚙️ Compilation & Execution
+
+### 1. Clone the Repository
+```bash
+>>>>>git clone https://github.com/Aman-Kasa/WK5_ATM.git
+>>>>>cd WK5_ATM
+
+----------------------------------------------------------------------------------
+  2. Compile
+>>>>> gcc atm.c functions.c login.c -o atm
+
+----------------------------------------------------------------------------------
+3. Run
+>>>>>./atm
+
+----------------------------------------------------------------------------------
+
+***Repository Structure***
+
+WK5_ATM/
+│── atm.c           # Main program with menu
+│── login.c         # User login logic
+│── login.h         # Login header
+│── functions.c     # Core ATM operations (deposit, withdraw, check balance, transaction log)
+│── functions.h     # Functions header
+│── README.md       # Project documentation
+│── atm             # Compiled executable (after build)
